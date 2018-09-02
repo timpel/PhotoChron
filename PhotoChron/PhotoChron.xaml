@@ -1,0 +1,26 @@
+﻿<Window x:Class="PhotoChron.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PhotoChron"
+        mc:Ignorable="d"
+        Title="PhotoChron" Height="450" Width="800">
+    <Grid Background="#FF272020">
+
+        <DataGrid Name="fileDataGrid" SelectionChanged="DatagridSelectionChanged" AutoGenerateColumns="False" ItemsSource="{Binding FileList}" Drop="Datagrid_Drop" AllowDrop="True" Margin="0,0,390,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Date Created" Binding="{Binding Created}" />
+                <DataGridTextColumn Header="Date Modified" Binding="{Binding Modified}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Image x:Name="ImgPreview" Source="{Binding SelectedFileItem?.FilePath}" HorizontalAlignment="Left" Height="262" Margin="407,147,0,0" VerticalAlignment="Top" Width="375"/>
+        <Label x:Name="SortCriteriaLabel" Content="Rename Based On:" HorizontalAlignment="Right" Margin="0,41,261,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFDEDEDE"/>
+        <RadioButton x:Name="RadioCreated"  Content="Date Created" Margin="0,47,146,0" VerticalAlignment="Top" Background="White" Foreground="#FFD1D1D1" HorizontalAlignment="Right" Width="89" IsChecked="True"/>
+        <RadioButton x:Name="RadioModified" Content="Date Modified" Margin="0,47,24,0" VerticalAlignment="Top" Background="White" Foreground="#FFD1D1D1" HorizontalAlignment="Right" Width="95"/>
+        <Button x:Name="RenameButton" Click="RenamePhotos" Content="Rename Files" HorizontalAlignment="Right" Margin="0,92,160,0" Width="75" Height="20" VerticalAlignment="Top"/>
+        <Label x:Name="EmptyDatagridLabel" Content="Drag &amp; Drop Image Files Here" Margin="118,86,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="170"/>
+
+    </Grid>
+</Window>
